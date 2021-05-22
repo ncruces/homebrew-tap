@@ -2,13 +2,13 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.3.tar.gz"
-  sha256 "7a90dff65a66a938a124647a91077b87a0300e479ed29f40a9226cafeb3049db"
+  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.4.tar.gz"
+  sha256 "178f759225b1385f45bd4dfbd52a4672cc28b7b55566c7b42d49ae5cf418e71b"
   head "https://github.com/ncruces/zenity"
 
   bottle do
     root_url "https://github.com/ncruces/homebrew-tap/releases/download/v0.0.0"
-    sha256 cellar: :any_skip_relocation, big_sur: "2ac7b0e30b9f629fc69b5a38e96d001c044e42c2ba2d36b982a21a929fc4553a"
+    sha256 cellar: :any_skip_relocation, big_sur: "2c4811550cbc5a164f6b8a3b40d96b651bba51a9ebd7f3dccf4a8ca0c7ded109"
   end
 
   depends_on "go" => :build
