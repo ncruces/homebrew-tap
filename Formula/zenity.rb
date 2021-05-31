@@ -9,6 +9,7 @@ class Zenity < Formula
   bottle do
     root_url "https://github.com/ncruces/homebrew-tap/releases/download/v0.0.0"
     sha256 cellar: :any_skip_relocation, big_sur: "2c4811550cbc5a164f6b8a3b40d96b651bba51a9ebd7f3dccf4a8ca0c7ded109"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "e2e60408eda6da891d797c0b238b8d5dc73d64a050a16664c589e166409b1e7b"
   end
 
   depends_on "go" => :build
@@ -16,14 +17,23 @@ class Zenity < Formula
   def install
     ENV["GOPATH"] = buildpath
 
+    target = bin/"zenity"
+    if OS.linux?
+      if File.readlines('/proc/version').grep(/microsoft/i).empty?
+        odie "This formula is only available on macOS and WSL"
+      end
+      ENV["GOOS"] = "windows"
+      target = libexec/"zenity.exe"
+    end
+
     bin_path = buildpath/"src/github.com/ncruces/zenity"
-    # Copy all files from their current location (GOPATH root)
-    # to $GOPATH/src/github.com/kevinburke/hostsfile
     bin_path.install Dir["*"]
     cd bin_path do
-      # Install the compiled binary into Homebrew's `bin` - a pre-existing
-      # global variable
-      system "go", "build", "-ldflags=-s -w", "-trimpath", "-o", bin/"zenity", "./cmd/zenity"
+      system "go", "build", "-ldflags=-s -w", "-trimpath", "-o", target, "./cmd/zenity"
+    end
+
+    if OS.linux?
+      (bin/"zenity").write_env_script target, "--unixeol --wslpath", {}
     end
   end
 end
