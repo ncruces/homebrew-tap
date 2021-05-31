@@ -14,14 +14,15 @@ class Zenity < Formula
 
   depends_on "go" => :build
 
+  if OS.linux? && File.readlines('/proc/version').grep(/microsoft/i).empty?
+    odie "This formula is only available on macOS and WSL."
+  end
+
   def install
     ENV["GOPATH"] = buildpath
 
     target = bin/"zenity"
     if OS.linux?
-      if File.readlines('/proc/version').grep(/microsoft/i).empty?
-        odie "This formula is only available on macOS and WSL"
-      end
       ENV["GOOS"] = "windows"
       target = libexec/"zenity.exe"
     end
