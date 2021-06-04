@@ -23,6 +23,7 @@ class Zenity < Formula
 
     target = bin/"zenity"
     if OS.linux?
+      # On WSL.
       ENV["GOOS"] = "windows"
       target = libexec/"zenity.exe"
     end
@@ -34,7 +35,7 @@ class Zenity < Formula
     end
 
     if OS.linux?
-      # exec zenity.exe with the appropriate args
+      # Create WSL wrapper script.
       (bin/"zenity").write_env_script target, "--unixeol --wslpath", {}
     end
   end
