@@ -1,3 +1,5 @@
+return if OS.linux?
+
 cask "rethinkraw" do
   version "v0.6.0"
   sha256 "797f4b796b94833382179712759295331a0663464ae46246f0d4d209f80e3876"
