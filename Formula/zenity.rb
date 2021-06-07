@@ -39,6 +39,7 @@ class Zenity < Formula
 
   test do
     return if OS.linux? && ENV["HOMEBREW_GITHUB_ACTIONS"]
+
     system "#{bin}/zenity --progress --auto-close </dev/null"
   end
 end
