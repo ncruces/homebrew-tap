@@ -2,17 +2,19 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.4.tar.gz"
-  sha256 "178f759225b1385f45bd4dfbd52a4672cc28b7b55566c7b42d49ae5cf418e71b"
+  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.5.tar.gz"
+  sha256 "eb7d77e06de7a2585a1c080313817f51c48be20a03908b79648c5ed7ffa5a2ad"
   head "https://github.com/ncruces/zenity"
 
   bottle do
-    root_url "https://github.com/ncruces/homebrew-tap/releases/download/v0.0.0"
-    sha256 cellar: :any_skip_relocation, big_sur:      "2c4811550cbc5a164f6b8a3b40d96b651bba51a9ebd7f3dccf4a8ca0c7ded109"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "e2e60408eda6da891d797c0b238b8d5dc73d64a050a16664c589e166409b1e7b"
+    root_url "https://github.com/ncruces/homebrew-tap/releases/download/bottles"
+    sha256 cellar: :any_skip_relocation, big_sur:      "211cdeffecbf5d313d9fd0d38b8bf3e366b36ad6fac44db1f4973b4ef26fea7f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "2ac388c1fa5e54fc3ac56654328b18a5c14acaf6b18e45609bea3c46a4a1524e"
   end
 
   depends_on "go" => :build
+
+  conflicts_with "zenity"
 
   if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty?
     odie "This formula is only available on macOS and WSL."
@@ -23,7 +25,7 @@ class Zenity < Formula
 
     target = bin/"zenity"
     if OS.linux?
-      # On WSL.
+      # This is WSL, build for Windows.
       ENV["GOOS"] = "windows"
       target = libexec/"zenity.exe"
     end
@@ -38,5 +40,9 @@ class Zenity < Formula
       # Create WSL wrapper script.
       (bin/"zenity").write_env_script target, "--unixeol --wslpath", {}
     end
+  end
+
+  test do
+    system "#{bin}/zenity --progress --auto-close </dev/null"
   end
 end
