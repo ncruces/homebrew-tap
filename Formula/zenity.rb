@@ -14,7 +14,7 @@ class Zenity < Formula
 
   depends_on "go" => :build
 
-  conflicts_with "zenity"
+  # conflicts_with "homebrew/core/zenity"
 
   if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty? && ENV.exclude?("CI")
     odie "This formula is only available on macOS and WSL."
