@@ -16,7 +16,7 @@ class Zenity < Formula
 
   conflicts_with "zenity"
 
-  if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty?
+  if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty? && ENV.exclude?("CI")
     odie "This formula is only available on macOS and WSL."
   end
 
@@ -25,9 +25,9 @@ class Zenity < Formula
 
     target = bin/"zenity"
     if OS.linux?
-      # This is WSL, build for Windows.
       ENV["GOOS"] = "windows"
       target = libexec/"zenity.exe"
+      (bin/"zenity").write_env_script target, "--unixeol --wslpath", {}
     end
 
     bin_path = buildpath/"src/github.com/ncruces/zenity"
@@ -35,14 +35,11 @@ class Zenity < Formula
     cd bin_path do
       system "go", "build", "-ldflags=-s -w", "-trimpath", "-o", target, "./cmd/zenity"
     end
-
-    if OS.linux?
-      # Create WSL wrapper script.
-      (bin/"zenity").write_env_script target, "--unixeol --wslpath", {}
-    end
   end
 
   test do
+    return if OS.linux? && ENV.include?("CI")
+
     system "#{bin}/zenity --progress --auto-close </dev/null"
   end
 end
