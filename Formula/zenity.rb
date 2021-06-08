@@ -14,6 +14,7 @@ class Zenity < Formula
 
   depends_on "go" => :build
 
+  # Can't get this to work for the custom tap. Why?
   # conflicts_with "homebrew/core/zenity"
 
   if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty? && ENV.exclude?("CI")
@@ -25,6 +26,8 @@ class Zenity < Formula
 
     target = bin/"zenity"
     if OS.linux?
+      # We're either on WSL or CI.
+      # Build the Windows version and wrap for WSL.
       ENV["GOOS"] = "windows"
       target = libexec/"zenity.exe"
       (bin/"zenity").write_env_script target, "--unixeol --wslpath", {}
@@ -38,6 +41,7 @@ class Zenity < Formula
   end
 
   test do
+    # CI is not WSL, so can't run the test.
     return if OS.linux? && ENV.include?("CI")
 
     system "#{bin}/zenity --progress --auto-close </dev/null"
