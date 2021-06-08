@@ -16,8 +16,8 @@ class Zenity < Formula
 
   conflicts_with "zenity"
 
-  if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty?
-    odie "This formula is only available on macOS and WSL." unless ENV["HOMEBREW_GITHUB_ACTIONS"]
+  if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty? && ENV.exclude?("HOMEBREW_GITHUB_ACTIONS")
+    odie "This formula is only available on macOS and WSL."
   end
 
   def install
@@ -38,7 +38,7 @@ class Zenity < Formula
   end
 
   test do
-    return if OS.linux? && ENV["HOMEBREW_GITHUB_ACTIONS"]
+    return if OS.linux? && ENV.include?("HOMEBREW_GITHUB_ACTIONS")
 
     system "#{bin}/zenity --progress --auto-close </dev/null"
   end
