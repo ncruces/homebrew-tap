@@ -16,10 +16,6 @@ class Zenity < Formula
 
   conflicts_with "zenity"
 
-  if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty? && ENV.exclude?("GITHUB_ACTIONS")
-    odie "This formula is only available on macOS and WSL. #{ENV}"
-  end
-
   def install
     ENV["GOPATH"] = buildpath
 
