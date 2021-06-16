@@ -2,8 +2,8 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.5.tar.gz"
-  sha256 "eb7d77e06de7a2585a1c080313817f51c48be20a03908b79648c5ed7ffa5a2ad"
+  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.7.tar.gz"
+  sha256 "847d6e8262b52bcbf1fa57833e655673129fc92f017e5a4eb7c6ffb0ff4a7dc0"
   head "https://github.com/ncruces/zenity"
 
   bottle do
