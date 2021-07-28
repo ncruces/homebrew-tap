@@ -8,6 +8,7 @@ class Zenity < Formula
 
   bottle do
     root_url "https://github.com/ncruces/homebrew-tap/releases/download/zenity-0.7.8"
+    sha256 cellar: :any_skip_relocation, big_sur:      "fca6af7866102443e1eac5963cbfe01b46ec17b8ccb9ccfb217fc495d1c394c9"
     sha256 cellar: :any_skip_relocation, catalina:     "e248a01ee026064b6408230babcd28aa5f5e0bd76ff01e18edfb7d94e4968864"
     sha256 cellar: :any_skip_relocation, x86_64_linux: "8c90527ce9cb43daafd7f729bda8b813d8f60cab3c1f595e8c66b7ed0114d878"
   end
