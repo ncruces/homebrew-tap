@@ -2,8 +2,8 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.8.tar.gz"
-  sha256 "91ed34582be5c5f23792cb1a0442e3deb8f944e44b8ae77bd934367f4f2af97f"
+  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.10.tar.gz"
+  sha256 "570e5f36f51000dac4a8a7fb72b049d79f09fdcf121bb27c84c6ea72caa6e9a5"
   head "https://github.com/ncruces/zenity"
 
   bottle do
@@ -37,7 +37,7 @@ class Zenity < Formula
     bin_path = buildpath/"src/github.com/ncruces/zenity"
     bin_path.install Dir["*"]
     cd bin_path do
-      system "go", "build", "-ldflags=-s -w", "-trimpath", "-o", target, "./cmd/zenity"
+      system "go", "build", "-ldflags=-s -w -X main.version=v0.7.10", "-trimpath", "-o", target, "./cmd/zenity"
     end
   end
 
