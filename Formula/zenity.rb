@@ -7,10 +7,9 @@ class Zenity < Formula
   head "https://github.com/ncruces/zenity"
 
   bottle do
-    root_url "https://github.com/ncruces/homebrew-tap/releases/download/zenity-0.7.8"
-    sha256 cellar: :any_skip_relocation, big_sur:      "fca6af7866102443e1eac5963cbfe01b46ec17b8ccb9ccfb217fc495d1c394c9"
-    sha256 cellar: :any_skip_relocation, catalina:     "e248a01ee026064b6408230babcd28aa5f5e0bd76ff01e18edfb7d94e4968864"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "8c90527ce9cb43daafd7f729bda8b813d8f60cab3c1f595e8c66b7ed0114d878"
+    root_url "https://github.com/ncruces/homebrew-tap/releases/download/zenity-0.7.9"
+    sha256 cellar: :any_skip_relocation, catalina:     "2af7d76e4ae2e8d70a8d649c0db98072ae40b7e1d4c1b0e590b4fdd88ca77dd4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "6e9124189c567b287ed8a9f9f5768bfd7c4f2d414aeb32b811ab7f5154034910"
   end
 
   depends_on "go" => :build
