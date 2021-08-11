@@ -37,7 +37,7 @@ class Zenity < Formula
     bin_path = buildpath/"src/github.com/ncruces/zenity"
     bin_path.install Dir["*"]
     cd bin_path do
-      system "go", "build", "-ldflags=-s -w -X main.version=v0.7.10", "-trimpath", "-o", target, "./cmd/zenity"
+      system "go", "build", "-ldflags=-s -w -X main.tag=v0.7.10", "-trimpath", "-o", target, "./cmd/zenity"
     end
   end
 
