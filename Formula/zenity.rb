@@ -2,8 +2,8 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.10.tar.gz"
-  sha256 "570e5f36f51000dac4a8a7fb72b049d79f09fdcf121bb27c84c6ea72caa6e9a5"
+  url "https://github.com/ncruces/zenity/archive/refs/tags/v0.7.12.tar.gz"
+  sha256 "98ede20e3153b588e3442aa99cf0011a9aa2ccd4fa0a482ce9fbe3150b2fa912"
   head "https://github.com/ncruces/zenity"
 
   bottle do
@@ -18,8 +18,10 @@ class Zenity < Formula
   # Can't get this to work for the custom tap. Why?
   # conflicts_with "homebrew/core/zenity"
 
-  if OS.linux? && File.readlines("/proc/version").grep(/microsoft/i).empty? && ENV.exclude?("CI")
-    odie "This formula is only available on macOS and WSL."
+  on_linux do
+    if File.readlines("/proc/version").grep(/microsoft/i).empty? && ENV.exclude?("CI")
+      odie "This formula is only available on macOS and WSL."
+    end
   end
 
   def install
@@ -37,7 +39,7 @@ class Zenity < Formula
     bin_path = buildpath/"src/github.com/ncruces/zenity"
     bin_path.install Dir["*"]
     cd bin_path do
-      system "go", "build", "-ldflags=-s -w -X main.tag=v0.7.10", "-trimpath", "-o", target, "./cmd/zenity"
+      system "go", "build", "-ldflags=-s -w -X main.tag=v0.7.12", "-trimpath", "-o", target, "./cmd/zenity"
     end
   end
 
