@@ -2,8 +2,8 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/homebrew-tap/releases/download/zenity-0.8.3/zenity_brew.zip"
-  sha256 "ea6b32a2a2365a7f250e2cabcff2412ac89610bf967534dc5266890b8795da7e"
+  url "https://github.com/ncruces/homebrew-tap/releases/download/zenity-0.8.4/zenity_brew.zip"
+  sha256 "28ee9529e6b7db327bf2075eec73482551d1cd3913449a3c4e17409c80e3e705"
   license "MIT"
 
   # Can't get this to work for the custom tap. Why?
