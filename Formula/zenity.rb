@@ -2,12 +2,9 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/zenity/releases/download/v0.8.5/zenity_brew.zip"
-  sha256 "52af9d93e3604d07c63d50f7f904ba2573fc9c104ae59541d7fbc56fcc64791c"
+  url "https://github.com/ncruces/zenity/releases/download/v0.8.6/zenity_brew.zip"
+  sha256 "3304c1abeb4690431567f63c1e135f0f3c5ba067669d58656cbb2e879081a725"
   license "MIT"
-
-  # Can't get this to work for the custom tap. Why?
-  # conflicts_with "homebrew/core/zenity"
 
   on_linux do
     if File.readlines("/proc/version").grep(/microsoft/i).empty?
