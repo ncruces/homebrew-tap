@@ -2,8 +2,8 @@ class Zenity < Formula
   desc "Dialog boxes for the command-line"
   homepage "https://pkg.go.dev/github.com/ncruces/zenity"
 
-  url "https://github.com/ncruces/zenity/releases/download/v0.8.8/zenity_brew.zip"
-  sha256 "ac5d71ee2841c7caa0d6c80ad1fb199bedbf373ad5bbea5a463d9fd33cd579aa"
+  url "https://github.com/ncruces/zenity/releases/download/v0.8.9/zenity_brew.zip"
+  sha256 "c2ae53a9effb7490d2bc043d26236b4bbe6d154e01be5163371ad4ef15346f43"
   license "MIT"
 
   on_linux do
