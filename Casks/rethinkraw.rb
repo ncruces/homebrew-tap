@@ -1,6 +1,6 @@
 cask "rethinkraw" do
-  version "0.7.0"
-  sha256 "936d91f98922af69e71378ad746921b70282fa5f9b923824e4f228429b489a92"
+  version "0.8.0"
+  sha256 "afc0f962efdbc798b85ef1402e40342e064f03eda5c25759c3eb47702045da21"
 
   url "https://rethinkraw.com/releases/download/v#{version}/RethinkRAW.dmg"
   name "RethinkRAW"
