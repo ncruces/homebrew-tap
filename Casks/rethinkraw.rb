@@ -1,6 +1,6 @@
 cask "rethinkraw" do
-  version "0.10.1"
-  sha256 "bdb01d1c19d48158c2a2942c8c52dbdeb3b499e695a89cb245aed22f9dac5754"
+  version "0.10.2"
+  sha256 "2585213417c8655644308359a4506cba2c24a8d04e1858da7d942d2b36ca009e"
   url "https://github.com/ncruces/RethinkRAW/releases/download/v#{version}/RethinkRAW.dmg"
   name "RethinkRAW"
   desc "RAW photo editor"
